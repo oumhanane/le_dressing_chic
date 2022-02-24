@@ -44,7 +44,7 @@ class ProductController extends AbstractController
         //Je recupere tous les produits associés à cette catégorie
         $productsCategory = $category->getProducts();
 
-        //j'initiliase un tableau vide
+        //j'initialise un tableau vide
         //Mais j'ai pour but de le remplir avec 4 produits à suggérer au client
         $suggestedProducts = [];
 
