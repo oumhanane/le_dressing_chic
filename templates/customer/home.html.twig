@@ -1,7 +1,89 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Le Dressing de Samira!{% endblock %}
+{% block title %}Le Dressing de Samira!
+{% endblock %}
 
 {% block body %}
+
+	<section>
+		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-indicators">
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			</div>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="https://media.istockphoto.com/photos/sky-blue-handbag-purse-and-beautiful-woman-hand-with-red-manicure-on-picture-id1034356920?k=6&m=1034356920&s=612x612&w=0&h=CgO8e3ntT7k09VUKD_wbySL5G4R1bF2RyEKr_LQEfxw=" class="d-block w-100 imageCarousel" alt="image sac femme">
+				</div>
+				<div class="carousel-item">
+					<img src="https://cdn.pixabay.com/photo/2013/10/09/14/19/belts-193227_960_720.jpg" class="d-block w-100 imageCarousel" alt="image ceinture">
+				</div>
+				<div class="carousel-item">
+					<img src="https://cdn.pixabay.com/photo/2010/12/14/18/36/belts-3362_960_720.jpg" class="d-block w-100 imageCarousel" alt="image ceinture">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+	</section>
+
+	<section>
+		<div class="container py-5">
+			<div class="row">
+				<div class="col-12">
+					<h3 class="text-center">Les catégories</h3>
+				</div>
+
+				{% for category in categories %}
+
+					<div class="col-sm-12 col-md-6 col-lg-4 mt-3 imagecentree">
+						<div class="card">
+							<img src="{{ category.image }}" class="card-img-top imageCard" alt="image_category">
+							<div class="card-body">
+								<h5 class="card-title">{{ category.name }}</h5>
+								<a href="{{ path('boutique_product_show_by_category',{'id': category.id}) }}" class="btn btn-primary w-100">Consulter</a>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="container py-5">
+			<div class="row">
+				<div class="col-12">
+					<h3 class="text-center">Les nouveautés</h3>
+				</div>
+
+				{% for product in products %}
+
+					<div class="col-sm-12 col-md-6 col-lg-4 mt-3">
+						<div class="card">
+							<img src="{{ product.image }}" class="card-img-top imageCard" alt="image_category">
+							<div class="card-body">
+								<h5 class="card-title">{{ product.name }}</h5>
+								<p>{{ product.price | priceEuro }}</p>
+								<a href="{{ path('boutique_product_detail',{'id': product.id} ) }}" class="btn btn-primary w-100">Consulter</a>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+
 
 {% endblock %}

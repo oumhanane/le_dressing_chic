@@ -1,7 +1,9 @@
 body {
     color: black;
     background-color: rgb(165, 106, 219);
+    
 }
+
 .imageCard {
     height: 300px;
     object-fit: cover;
@@ -9,10 +11,15 @@ body {
 
 .imageCarousel {
     height: 500px;
-    object-fit: cover;
+    object-fit: cover; 
 }
 
 .imageDetailProduct {
     height: 600px;
     object-fit: cover;
 }
+
+.imagecentree {
+    margin: auto;
+}
+

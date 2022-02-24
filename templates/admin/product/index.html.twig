@@ -4,7 +4,6 @@
 {% endblock %}
 
 {% block body %}
-
 	<div class="container py-5">
 
 		<div class="row">
@@ -16,6 +15,9 @@
 				<a class="btn btn-primary" href="{{ path('admin_product_new') }}">Ajouter</a>
 			</div>
 
+			<div class="navigation">
+				{{ knp_pagination_render(products) }}
+			</div>
 			{% for product in products %}
 
 				<div class="col-sm-12 col-md-6 lg-4 mt-3">
@@ -23,18 +25,20 @@
 					<div class="card">
 						<img src="{{ product.image }}" class="card-img-top imageCard" alt="image_produit">
 						<div class="card-body">
-							<h5 class="card-title">{{ product.name }}</h5>
-                            <p>{{ product.price }}</p>
+							<h5 class="card-title">{{ product.name | upper }}</h5>
+							<p class="mb-1">{{ product.category.name }}</p>
+							<p>{{ product.price | priceEuro }}</p>
 							<a href="{{ path('admin_product_edit',{ 'id' : product.id } ) }}" class="btn btn-primary w-100">Gérer</a>
 						</div>
 					</div>
-
 				</div>
 
 			{% endfor %}
 
+			<div class="navigation mt-3">
+				{{ knp_pagination_render(products) }}
+			</div>
 		</div>
-
 	</div>
 
 {% endblock %}
