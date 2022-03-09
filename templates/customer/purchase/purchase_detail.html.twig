@@ -9,7 +9,7 @@
 					<a href="{{ path('profile_purchase_list') }}" class="btn btn-dark">Retour aux commandes</a>
 				</div>
 				<div class="col-12 mb-3">
-					<h3 class="text-center">Ma commande #{{ purchase.id }}</h3>
+					<h3 class="text-center">Ma commande n°{{ purchase.id }}</h3>
 				</div>
 				{% include "_messages_flash.html.twig" %}
 				<div class="col-sm-12 col-md-6">
@@ -28,7 +28,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									{% for item in purchase.listProduct.contentListProducts %}
+									{% for item in purchase.listProduct%}
 										<tr>
 											<th>
 												<div class="d-flex align-items-center">
@@ -85,9 +85,9 @@
 		<div class="col-12 pt-3">
 			<div class="card">
 				<div class="card-header">
-					<h5 class="card-title">Facture #{{ purchase.invoice.id }}</h5>
+					<h5 class="card-title">Facture n°{{ purchase.invoice.id }}</h5>
 					<p>Date :
-						{{ purchase.createdAt | date('d-M-Y') }}</p>
+						{{ purchase.createAt | date('d-M-Y') }}</p>
 				</div>
 				<div class="card-body">
 					<table class="table">
@@ -100,17 +100,17 @@
 							</tr>
 						</thead>
 						<tbody>
-							{% for item in purchase.invoice.contentInvoices %}
+							{% for item in purchase.listProduct %}
 								<tr>
 									<th>
 										<div class="d-flex align-items-center">
-											<img src="{{ item.imageProduct }}" alt="" style="height:80px;object-fit:contain;">
+											<img src="{{ item.product.image }}" alt="" style="height:80px;object-fit:contain;">
 											<div class="d-flex flex-column align-items-center">
-												<p>{{ item.productName }}</p>
+												<p>{{ item.product.name }}</p>
 											</div>
 										</div>
 									</th>
-									<td>{{ item.priceProduct | priceEuro }}</td>
+									<td>{{ item.product.price | priceEuro }}</td>
 									<td>
 										<button class="btn btn-light">
 											{{ item.quantity }}</button>
@@ -131,7 +131,6 @@
 									</p>
 								</th>
 							</tr>
-
 						</tbody>
 					</table>
 				</div>
@@ -139,5 +138,4 @@
 		</div>
 	</div>
 </section>
-
 {% endblock %}
