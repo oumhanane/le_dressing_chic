@@ -20,6 +20,10 @@ class ContentListProduct
     #[ORM\Column(type: 'integer')]
     private $quantity;
 
+    #[ORM\ManyToOne(targetEntity: ListProduct::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private $listProduct;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -64,6 +68,6 @@ class ContentListProduct
 
     public function getTotal()
     {
-        return $this->getproduct->getPrice() * $this->getQuantity();
+        return $this->getproduct()->getPrice() * $this->getQuantity();
     }
 }
